@@ -51,11 +51,13 @@ async def on_message(message):
 
     if message.content.startswith('~boobs'):
         em = OnMessageView.BoobsView()
-        await client.send_message(message.channel, ' ',embed=em)
+        channel = discord.utils.get(client.get_all_channels(),name='nsfw')
+        await client.send_message(channel, ' ',embed=em)
 
     if message.content.startswith('~butts'):
         em = OnMessageView.ButtsView()
-        m = await client.send_message(message.channel, ' ',embed=em)
+        channel = discord.utils.get(client.get_all_channels(),name='nsfw')
+        m = await client.send_message(channel, ' ',embed=em)
 
     if message.content.startswith('!s -d'):
         user_msg = message.content.replace('!s -d ','')
@@ -71,12 +73,14 @@ async def on_message(message):
     if message.content.startswith('~34'):
         search = message.content.replace('~34 ' ,'')
         em = OnMessageView.Rule34View(search, avatar)
-        await client.send_message(message.channel, '', embed=em)
+        channel = discord.utils.get(client.get_all_channels(),name='nsfw')
+        await client.send_message(channel, ' ',embed=em)
 
     if message.content.startswith('~booru'):
         search = message.content.replace('~booru ' ,'')
         em = OnMessageView.Rule34View(search, avatar)
-        await client.send_message(message.channel, '', embed=em)
+        channel = discord.utils.get(client.get_all_channels(),name='nsfw')
+        await client.send_message(channel, ' ',embed=em)
 
     if message.content.startswith('!s -r'):
         private = await client.start_private_message(message.author)
