@@ -19,7 +19,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!s bd'):
+    if message.content.startswith('~gm'):
         em = OnMessageView.GoodMornigView(message)
         await client.send_message(message.channel, '',embed=em)
 
@@ -28,7 +28,7 @@ async def on_message(message):
         em = UnameView.Uname(command,avatar)
         await client.send_message(message.channel, '',embed=em)
 
-    if message.content.startswith('!s ping'):
+    if message.content.startswith('~ping'):
         start = time.time()
         msg = '``Pong ``:ping_pong:'.format(message)
         em = OnMessageView.PingView(msg,avatar)
@@ -40,20 +40,20 @@ async def on_message(message):
         await client.edit_message(m, ' ',embed=em)
 
 
-    if message.content.startswith('!s -w'):
-        if message.content.replace('!s -w','') == '':
+    if message.content.startswith('~wea'):
+        if message.content.replace('~wea','') == '':
             msg = 'Please insert your city name!'
             await client.send_message(message.channel, msg)
         else:
-            city = message.content.replace('!s -w','')
+            city = message.content.replace('~wea','')
             em = OnMessageView.WeatherView(city, avatar, auth.WeatherToken())
             await client.send_message(message.channel, '**This is the current weather forecast of '+city+'.**', embed=em)
 
-    if message.content.startswith('!s -boobs'):
+    if message.content.startswith('~boobs'):
         em = OnMessageView.BoobsView()
         await client.send_message(message.channel, ' ',embed=em)
 
-    if message.content.startswith('!s -butts'):
+    if message.content.startswith('~butts'):
         em = OnMessageView.ButtsView()
         m = await client.send_message(message.channel, ' ',embed=em)
 
@@ -68,13 +68,13 @@ async def on_message(message):
         else:
             await client.send_message(message.channel, 'Please, insert a valid number.')
 
-    if message.content.startswith('!s -34'):
-        search = message.content.replace('!s -34 ' ,'')
+    if message.content.startswith('~34'):
+        search = message.content.replace('~34 ' ,'')
         em = OnMessageView.Rule34View(search, avatar)
         await client.send_message(message.channel, '', embed=em)
 
-    if message.content.startswith('!s -booru'):
-        search = message.content.replace('!s -booru ' ,'')
+    if message.content.startswith('~booru'):
+        search = message.content.replace('~booru ' ,'')
         em = OnMessageView.Rule34View(search, avatar)
         await client.send_message(message.channel, '', embed=em)
 
@@ -126,13 +126,13 @@ async def on_message(message):
 
         await client.send_message(message.channel, '', embed=em)
 
-    if message.content.startswith('!s -h'):
+    if message.content.startswith('~help'):
         em = discord.Embed(color=0xff0047)
         em.set_author(name="Commands list.", url=em.Empty)
         em.add_field(name="Helpful commands", value="teste\naaa", inline=True)
         em.set_footer(text="Powered by Sofia.", icon_url=em.Empty)
         await client.send_message(m, '', embed=em)
-    if message.content.startswith('!s -kitty'):
+    if message.content.startswith('~kitty'):
         em = OnMessageView.KittyView(avatar)
         m = await client.send_message(message.channel, ' ',embed=em)
 @client.event
