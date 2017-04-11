@@ -1,6 +1,7 @@
 import discord
 from src.nsfw import boobs, butts, Rule34, Booru
 from src.weather import Weather
+from src.kitty import Cat
 import asyncio
 import time
 from datetime import datetime
@@ -132,3 +133,10 @@ class OnMessageView:
             em.set_image(url=url)
             em.set_footer(text='Powered by rule34.xxx API.', icon_url=em.Empty)
             return em
+    def KittyView(avatar):
+        url = Cat.GetSomeRandomKitty()
+        em = discord.Embed(color=0xff0047)
+        em.set_author(name='Kitty.', url=em.Empty)
+        em.set_image(url=url)
+        em.set_footer(text='Powered by Sofia', icon_url=avatar)
+        return em

@@ -75,7 +75,7 @@ async def on_message(message):
 
     if message.content.startswith('!s -booru'):
         search = message.content.replace('!s -booru ' ,'')
-        em = OnMessageView.Rule34View(search)
+        em = OnMessageView.Rule34View(search, avatar)
         await client.send_message(message.channel, '', embed=em)
 
     if message.content.startswith('!s -r'):
@@ -132,7 +132,9 @@ async def on_message(message):
         em.add_field(name="Helpful commands", value="teste\naaa", inline=True)
         em.set_footer(text="Powered by Sofia.", icon_url=em.Empty)
         await client.send_message(m, '', embed=em)
-
+    if message.content.startswith('!s -kitty'):
+        em = OnMessageView.KittyView(avatar)
+        m = await client.send_message(message.channel, ' ',embed=em)
 @client.event
 async def on_member_join(member):
     avatar = client.user.avatar_url
